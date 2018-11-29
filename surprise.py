@@ -4,8 +4,14 @@ import os
 import random
 import time
 
-DELAY = 0.5
+DELAY = 0.8
 CONGRATULATIONS_COUNT = 10000
+ERASE = '\x1b[1A\x1b[2K'
+
+
+def clear_screen():
+    width, height = os.get_terminal_size()
+    print(ERASE * height)
 
 
 def str_in_place(str, row, col):
@@ -13,7 +19,7 @@ def str_in_place(str, row, col):
     total = width * height
     before_spaces = row * width + col
     after_spaces = total - before_spaces - len(str)
-    before_str = '\r' + before_spaces * ' '
+    before_str = before_spaces * ' '
     after_str = after_spaces * ' '
     return before_str + str + after_str
 
@@ -34,26 +40,42 @@ def delta_to_str(delta):
     return str(delta).split('.')[0]
 
 
-def show_progress(delta, total_delta):
-    print('\rDima is coming in {} ... it is only {:.1f}% of total {}'.format(
+def get_progress_msg(delta, total):
+    return 'Dima is coming in {} ... it is only {:.1f}% of total {}'.format(
         delta_to_str(delta),
-        delta / total_delta * 100,
-        delta_to_str(total_delta)
-    ), end='', flush=True)
+        delta / total * 100,
+        delta_to_str(total)
+    )
+
+
+def get_surprise_timer_msg(delta):
+    return 'Time left to surprise: {} ... Please be at home in time (20:45)'.format(delta_to_str(delta))
+
+
+def get_surprise_msg():
+    return 'SURPRISE TIME!!! Please relax and enjoy. The surprise should appear soon.'
+
+
+def print_messages(msgs):
+    clear_screen()
+    for msg in msgs:
+        print(msg)
 
 
 def show_congratulations():
     width, height = os.get_terminal_size()
-    row = random.randint(0, min(height, 10))
-    col = random.randint(0, min(width, 60))
+    row = random.randint(0, height - 1)
+    col = random.randint(0, width - 1)
     message = str_in_place("Dima is here!!!", row, col)
     message_with_stars = add_snow(message)
-    print(message_with_stars, end='', flush=True)
+    clear_screen()
+    print(message_with_stars)
 
 
 departure_datetime = datetime(2018, 10, 27, 21, 20)
 return_datetime = datetime(2018, 12, 1, 9, 10)
-
+surprise_datetime = datetime(2018, 11, 30, 20, 45)
+surprise_duration = timedelta(minutes=45)
 
 total_delta = return_datetime - departure_datetime
 current_datetime = datetime.now()
@@ -61,7 +83,12 @@ current_datetime = datetime.now()
 while current_datetime < return_datetime:
     current_datetime = datetime.now()
     remaining_delta = return_datetime - current_datetime
-    show_progress(remaining_delta, total_delta)
+    messages = [get_progress_msg(remaining_delta, total_delta)]
+    if current_datetime < surprise_datetime:
+        messages.append(get_surprise_timer_msg(surprise_datetime - current_datetime))
+    elif current_datetime < surprise_datetime + surprise_duration:
+        messages.append(get_surprise_msg())
+    print_messages(messages)
     time.sleep(DELAY)
 
 for i in range(CONGRATULATIONS_COUNT):
