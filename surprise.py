@@ -54,8 +54,7 @@ OWWXKOkdoc:,'.                    'MW.    .Mx              .'         0Md     ..
 
 
 def clear_screen():
-    width, height = os.get_terminal_size()
-    print(ERASE * height)
+    os.system('cls' if os.name=='nt' else 'clear')
 
 
 def str_in_place(str, row, col):
