@@ -9,6 +9,50 @@ CONGRATULATIONS_COUNT = 10000
 ERASE = '\x1b[1A\x1b[2K'
 
 
+HAPPY_SUN = """
+                                             ;NX.                                                   
+                                             0MMx                                                   
+                                             oMMX                                                   
+                                             .MMM'                                                  
+                                              0MMk                                                  
+                                              ;MMM.        okl                                      
+                               .xk:            WMMo       cMMW                      :o;             
+                               'WMMd           xMMX       XMMx                   ;kMMMK             
+                                .KMMX'         ;MMM.     cMMM.                .dWMMNo.              
+     .KNOo;.                      lWMMx.       .MMM;     NMMx              .lXMMWx'                 
+      o0WMMMWOo,.                  .OMMWc       NMM:    ,MMM.            :0MMM0:                    
+         .;o0WMMMNOo;.               ,XMMX.      '.     .OXx          :OMMMKl.                      
+              .;o0WMMMNOo;.            cxo       .,:cllolc:,.      c0MMMXo.                         
+                   .;oONMMMW0d;.           .:x0WWXOkdollodk0NMKx:. oKOl.                            
+                        .,oONMMMWKl     'xNWOl,.              ,oKMKl                  .',           
+                             .,lxk:   :XMk,                      .lNWx.       ..;lxOXMMMM0          
+                c0Odc;'...          .XMx.   .','.                   cWWc  lkKWMMMMWXOdl;.           
+                c0NMMMMMMMMMMMMMx  ;WW'  'kNOdlokNk.                 .KMx'XN0xl;..                  
+                    ..,;:clloool. .WW.  oWc       dM:     'lxOK0kl.    XMc                          
+                                  OMd              KW   oN0c'   .oWx   :MX                          
+                       ..';clo:   MM.              cx  oO.        ;Mo  'MM                          
+          ..,:codk0KNWMMMMMMMMX.  MM.                              ,.  cMXlkdl:,'..                 
+'odkOKXWMMMMMMMMWXKOxdlc;'..      0Mo      o'                          XMckNMMMMMMMMWNX0Okdol:;,... 
+OWWXKOkdoc:,'.                    'MW.    .Mx              .'         0Md     ..,;cldxO0KNWMMMMMMMMK
+                                ,c,:MN.    xM:            oWx       .KMo                     ..',;:.
+                            ,o0MMMN.,NWl    ;KXl,.   .'ckNx.       dMX,                             
+                       .:xXMMMNOl.    xMX:    .:dk000Odc'       .dWNc .KW0c                         
+                   .:kNMMMXx:.         .xWNo.                 :0MK:    cKMMMO:                      
+                  XMMMXd;.             .. :kWNkl,.      .':dKMXo.        .lXMMWk;                   
+                  ,l;.              .oNMMd   .cd0XWMWWWMNKkooKO:            .oNMMWk,                
+                                  'kMMMO;        co:        'WMMd              'dNMMk               
+                                ;KMMWd.         ,MMM.        .XMMO                ''                
+                              cNMMXc            ,MMM.         .KMMK.                                
+                            lNMMK;              'MMM.           OMMN.                               
+                          lWMMK,                ,MMM.            dMMW'                              
+                        oWMM0,                  lMMW              cMMM:                             
+                     .oWMM0'                    lMMo               ,WMMo                            
+                    .WMMO'                                          .NMMk                           
+                     ';.                                             .KMM0                          
+                                                                       0Wc                          
+"""
+
+
 def clear_screen():
     width, height = os.get_terminal_size()
     print(ERASE * height)
@@ -52,8 +96,14 @@ def get_surprise_timer_msg(delta):
     return 'Time left to surprise: {} ... Please be at home in time (20:45)'.format(delta_to_str(delta))
 
 
+def can_show_happy_sun(w, h):
+    return w > 100 and h > 40
+
+
 def get_surprise_msg():
-    return 'SURPRISE TIME!!! Please relax and enjoy. The surprise should appear soon.'
+    width, height = os.get_terminal_size()
+    image_text = HAPPY_SUN if can_show_happy_sun(width, height) else ""
+    return 'SURPRISE TIME!!! Please relax and enjoy. The surprise should appear soon.\n' + image_text
 
 
 def print_messages(msgs):
