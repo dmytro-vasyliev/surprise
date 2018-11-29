@@ -1,8 +1,8 @@
 # surprise
 
-How to run
+#### How to run
 `python3 surprise.py`
 
-Requirement
+#### Requirements
 - python >= 3.0
 - Run only in terminal
