@@ -10,46 +10,39 @@ ERASE = '\x1b[1A\x1b[2K'
 
 
 HAPPY_SUN = """
-                                             ;NX.                                                   
-                                             0MMx                                                   
-                                             oMMX                                                   
-                                             .MMM'                                                  
-                                              0MMk                                                  
-                                              ;MMM.        okl                                      
-                               .xk:            WMMo       cMMW                      :o;             
-                               'WMMd           xMMX       XMMx                   ;kMMMK             
-                                .KMMX'         ;MMM.     cMMM.                .dWMMNo.              
-     .KNOo;.                      lWMMx.       .MMM;     NMMx              .lXMMWx'                 
-      o0WMMMWOo,.                  .OMMWc       NMM:    ,MMM.            :0MMM0:                    
-         .;o0WMMMNOo;.               ,XMMX.      '.     .OXx          :OMMMKl.                      
-              .;o0WMMMNOo;.            cxo       .,:cllolc:,.      c0MMMXo.                         
-                   .;oONMMMW0d;.           .:x0WWXOkdollodk0NMKx:. oKOl.                            
-                        .,oONMMMWKl     'xNWOl,.              ,oKMKl                  .',           
-                             .,lxk:   :XMk,                      .lNWx.       ..;lxOXMMMM0          
-                c0Odc;'...          .XMx.   .','.                   cWWc  lkKWMMMMWXOdl;.           
-                c0NMMMMMMMMMMMMMx  ;WW'  'kNOdlokNk.                 .KMx'XN0xl;..                  
-                    ..,;:clloool. .WW.  oWc       dM:     'lxOK0kl.    XMc                          
-                                  OMd              KW   oN0c'   .oWx   :MX                          
-                       ..';clo:   MM.              cx  oO.        ;Mo  'MM                          
-          ..,:codk0KNWMMMMMMMMX.  MM.                              ,.  cMXlkdl:,'..                 
-'odkOKXWMMMMMMMMWXKOxdlc;'..      0Mo      o'                          XMckNMMMMMMMMWNX0Okdol:;,... 
-OWWXKOkdoc:,'.                    'MW.    .Mx              .'         0Md     ..,;cldxO0KNWMMMMMMMMK
-                                ,c,:MN.    xM:            oWx       .KMo                     ..',;:.
-                            ,o0MMMN.,NWl    ;KXl,.   .'ckNx.       dMX,                             
-                       .:xXMMMNOl.    xMX:    .:dk000Odc'       .dWNc .KW0c                         
-                   .:kNMMMXx:.         .xWNo.                 :0MK:    cKMMMO:                      
-                  XMMMXd;.             .. :kWNkl,.      .':dKMXo.        .lXMMWk;                   
-                  ,l;.              .oNMMd   .cd0XWMWWWMNKkooKO:            .oNMMWk,                
-                                  'kMMMO;        co:        'WMMd              'dNMMk               
-                                ;KMMWd.         ,MMM.        .XMMO                ''                
-                              cNMMXc            ,MMM.         .KMMK.                                
-                            lNMMK;              'MMM.           OMMN.                               
-                          lWMMK,                ,MMM.            dMMW'                              
-                        oWMM0,                  lMMW              cMMM:                             
-                     .oWMM0'                    lMMo               ,WMMo                            
-                    .WMMO'                                          .NMMk                           
-                     ';.                                             .KMM0                          
-                                                                       0Wc                          
+                                   KN.                                       
+                                  .MMl                                       
+                                   XM0                                       
+                                   oMM.                                      
+                                   .MMo      'l'                             
+                        :Ol         0MN      NMO                ,dl          
+                        ,WMk        cMM.    :MM;             .lNMNo          
+    .:,                  .KMN,      .MMc    XMX            ;OMMO,            
+    :XMMXkc'               lWMk.     MMd   ,MM:         .dNMXl.              
+       'lkNMMKx:.           .OMW;    .,    .0O.      .cKMWx'                 
+           .;o0WMW0d;.        ,c.   .;coxkkkxo:.   .KMMO:                    
+                .:dKMMWOo;.     'dKXko:,....';lkN0l.;;                       
+                     .cxKWk   oNO:.              .oN0,        .,cokXK.       
+            .dl;'..         :Wk.  ...               cWO  :dOXMMMXOxl,        
+            .xKNMMMMMMMWN. oM: .d0dllx0:             .XX,00dc'.              
+                 ...'',,. ,Ml  d;      Xl   ;xOkkOk,  .Mk                    
+                      .   OW           oK 'Xo.    .Nl  0W                    
+         ..';:ldxOKNWMMN  XX                       'l  XN,:'.                
+,ldxOKXWMMMMWX0Oxoc:,..   kM.    c.                   'Md0NMMMMWXKOkdol:;'.. 
+d0kxol:,'.                .WO    Wc          .:      .N0    ..',:codkOKXNMMMX
+                       .lOk;Wk   ,Nc       .oX;     ;Wk                    . 
+                   .lOWMWk: .KX,   ckkxdxkOx;     '0N;.l:                    
+               .cOWMWkc.      :XK:              :KXc  'KMWk,                 
+              XMWOc.          '.,xN0o;..  ..;o0Nx'      .oNMNd.              
+              .'           .oWMX   .;lxOOOOxl;cNK.         'xWMKc            
+                         .kMMk'      ,NK       OMW.           :Ok.           
+                       .OMMx.        lMM.       kMW,                         
+                     .kMMx.          lMM.        xMM;                        
+                   .xMMx.            oMM.         oMMc                       
+                 .xMMk.              OMN           cMMl                      
+                dWMO.                .c.            ;MMd                     
+                co.                                  'WMk                    
+                                                      ;Wd                                                                  
 """
 
 
@@ -96,7 +89,7 @@ def get_surprise_timer_msg(delta):
 
 
 def can_show_happy_sun(w, h):
-    return w > 100 and h > 40
+    return w > 77 and h > 35
 
 
 def get_surprise_msg():
